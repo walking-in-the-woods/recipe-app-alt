@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Edit Ingredient</title>
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+
+    <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            th:src="@{/webjars/popper.js/2.5.4/umd/popper.min.js}"></script>
+
+    <script crossorigin="anonymous" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="pannel-group">
+                <div class="card mb-3">
+                    <div class="card-header bg-primary bg-info text-light" style="max-height: 3.2rem;">
+                        <h5 class="card-title">Upload a new recipe image</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="http:\\localhost" method="post" enctype="multipart/form-data"
+                              th:action="@{&apos;/recipe/&apos; + ${recipe.getId()} + &apos;/image&apos;}">
+                            <div class="row mx-1">
+                                <label>Select File</label>
+                            </div>
+                            <div class="row mx-1 mt-3">
+                                <input id="imagefile" name="imagefile" type="file" class="file">
+                            </div>
+                            <div class="row mx-1 mb-1 mt-4">
+                                <button type="submit"
+                                        class="btn btn-primary btn-lg-2 btn-success text-light">Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
