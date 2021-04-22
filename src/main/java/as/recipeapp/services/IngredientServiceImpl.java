@@ -51,6 +51,8 @@ public class IngredientServiceImpl implements IngredientService {
             log.error("Ingredient id not found: " + ingredientId);
         }
 
+        ingredientCommandOptional.get().setRecipeId(recipe.getId());
+
         return ingredientCommandOptional.get();
     }
 
@@ -65,6 +67,7 @@ public class IngredientServiceImpl implements IngredientService {
             return new IngredientCommand();
         } else {
             Recipe recipe = recipeOptional.get();
+            recipe.setId(command.getRecipeId());
 
             Optional<Ingredient> ingredientOptional = recipe
                     .getIngredients()
@@ -102,7 +105,11 @@ public class IngredientServiceImpl implements IngredientService {
             }
 
             // TODO check for fail
-            return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+
+            IngredientCommand ingredientCommandSaved = ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+            ingredientCommandSaved.setRecipeId(recipe.getId());
+
+            return ingredientCommandSaved;
         }
     }
 
