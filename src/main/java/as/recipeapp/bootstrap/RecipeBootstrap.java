@@ -1,11 +1,6 @@
 package as.recipeapp.bootstrap;
 
-import as.recipeapp.domain.Category;
-import as.recipeapp.domain.Difficulty;
-import as.recipeapp.domain.Ingredient;
-import as.recipeapp.domain.Notes;
-import as.recipeapp.domain.Recipe;
-import as.recipeapp.domain.UnitOfMeasure;
+import as.recipeapp.domain.*;
 import as.recipeapp.repositories.CategoryRepository;
 import as.recipeapp.repositories.RecipeRepository;
 import as.recipeapp.repositories.UnitOfMeasureRepository;
@@ -39,6 +34,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
         loadCategories();
         loadUom();
         recipeRepository.saveAll(getRecipes());
